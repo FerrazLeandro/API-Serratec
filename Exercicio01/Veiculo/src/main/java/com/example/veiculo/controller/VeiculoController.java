@@ -34,7 +34,6 @@ public class VeiculoController {
 	
 	@GetMapping("/{id}")
 	public Veiculo buscar(@PathVariable Long id) {
-
 	// Usando função lambda
 	return lista.stream().filter(a -> a.getId().equals(id)).findFirst().orElse(null); 
 	
@@ -47,15 +46,16 @@ public class VeiculoController {
 		return veiculo;
 	}
 	
-	
+
 	@DeleteMapping("/{id}")
-	public void delete(@PathVariable Long id) {
+	public List<Veiculo> delete(@PathVariable Long id) {
 		for (int i = 0; i < lista.size(); i++) {
 			if (lista.get(i).getId().equals(id)) {
 				lista.remove(i);
-				break;
+				return listar();
 			} 
 		}
+		return null;
 	}
 	
 	
