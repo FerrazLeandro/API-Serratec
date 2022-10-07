@@ -1,9 +1,8 @@
-package com.example.veiculo.controller;
+package com.example.venda.controller;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,33 +14,28 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.veiculo.domain.Veiculo;
+import com.example.venda.domain.Produto;
+
 
 @RestController
-@RequestMapping("/veiculos")
-public class VeiculoController {
-	@Value("${nomeCliente}")
-	private String nomeCliente;
+@RequestMapping("/produtos")
+public class ProdutoController {
 	
-	@GetMapping("/cliente")
-	public String retornaCliente() {
-		return nomeCliente;
-	}
+
 	
-	private static List<Veiculo> lista = new ArrayList<Veiculo>();
+	private static List<Produto> lista = new ArrayList<Produto>();
 	static {
-		lista.add(new Veiculo(1234L, "VW", "Gol"));
-		lista.add(new Veiculo(0000L, "Fiat", "Palio"));
-		lista.add(new Veiculo(2222L, "Renault", "Logan Claiver"));
+		lista.add(new Produto(1, "Mouse" , 10.60));
+		lista.add(new Produto(2, "PC", 1500.));
 	}
 	
 	@GetMapping
-	public List<Veiculo> listar() {
+	public List<Produto> listar() {
 		return lista;
 	}
 	
 	@GetMapping("/{id}")
-	public Veiculo buscar(@PathVariable Long id) {
+	public Produto buscar(@PathVariable Integer id) {
 	// Usando função lambda
 	return lista.stream().filter(a -> a.getId().equals(id)).findFirst().orElse(null); 
 	
@@ -49,14 +43,14 @@ public class VeiculoController {
 	
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	public Veiculo inserir(@RequestBody Veiculo veiculo) {
-		lista.add(veiculo);
-		return veiculo;
+	public Produto inserir(@RequestBody Produto Produto) {
+		lista.add(Produto);
+		return Produto;
 	}
 	
 
 	@DeleteMapping("/{id}")
-	public List<Veiculo> delete(@PathVariable Long id) {
+	public List<Produto> delete(@PathVariable Integer id) {
 		for (int i = 0; i < lista.size(); i++) {
 			if (lista.get(i).getId().equals(id)) {
 				lista.remove(i);
@@ -68,15 +62,14 @@ public class VeiculoController {
 	
 	
 	@PutMapping("/{id}")
-	public Veiculo atualizar(@RequestBody Veiculo veiculo, @PathVariable Long id) {
+	public Produto atualizar(@RequestBody Produto Produto, @PathVariable Integer id) {
 		for (int i = 0; i < lista.size(); i++) {
 			if (lista.get(i).getId().equals(id)) {
-				Veiculo a = new Veiculo(id, veiculo.getMarca(), veiculo.getModelo());
+				Produto a = new Produto(id, Produto.getNome(), Produto.getValor());
 				lista.set(i,  a);
 				return a;
 			}
 		}
 		return null;
 	}
-	
 }
