@@ -26,34 +26,6 @@
 					"postgresql.dd.plain.string": "false",
 					"postgresql.dd.tag.string": "false"
 				},
-				"auth-model": "native"
-			}
-		},
-		"postgres-jdbc-183b4345c8a-3d5b0e9e8f5260ba": {
-			"provider": "postgresql",
-			"driver": "postgres-jdbc",
-			"name": "detqmr2tonv6vr",
-			"save-password": true,
-			"read-only": false,
-			"configuration": {
-				"host": "ec2-54-161-255-125.compute-1.amazonaws.com",
-				"port": "5432",
-				"database": "detqmr2tonv6vr",
-				"url": "jdbc:postgresql://ec2-54-161-255-125.compute-1.amazonaws.com:5432/detqmr2tonv6vr",
-				"configurationType": "MANUAL",
-				"home": "postgresql-x64-14",
-				"type": "dev",
-				"provider-properties": {
-					"@dbeaver-show-non-default-db@": "false",
-					"@dbeaver-show-template-db@": "false",
-					"@dbeaver-show-unavailable-db@": "false",
-					"show-database-statistics": "false",
-					"@dbeaver-read-all-data-types-db@": "false",
-					"read-keys-with-columns": "false",
-					"@dbeaver-use-prepared-statements-db@": "false",
-					"postgresql.dd.plain.string": "false",
-					"postgresql.dd.tag.string": "false"
-				},
 				"auth-model": "native",
 				"handlers": {}
 			}

@@ -1,4 +1,4 @@
-package com.example.cliente.controller;
+package com.example.tratamentoerros.exception;
 
 import java.util.List;
 import java.util.Optional;
@@ -18,8 +18,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.cliente.domain.Cliente;
-import com.example.cliente.repository.ClienteRepository;
+import com.example.tratamentoerros.domain.Cliente;
+import com.example.tratamentoerros.repository.ClienteRepository;
+
+
 
 @RestController()
 @RequestMapping("/cliente")
@@ -64,7 +66,6 @@ public class ClienteController {
 		if (clienteOptional.isPresent()) {
 			Cliente clienteBanco = clienteOptional.get();
 			clienteBanco.setCpf(cliente.getCpf());
-			clienteBanco.setDataNascimento(cliente.getDataNascimento());
 			clienteBanco.setEmail(cliente.getEmail());
 			clienteBanco.setNome(cliente.getNome());
 			clienteBanco = clienteRepository.save(clienteBanco);
